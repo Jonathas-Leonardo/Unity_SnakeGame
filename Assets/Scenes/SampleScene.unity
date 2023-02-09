@@ -123,6 +123,61 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &140206916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 140206918}
+  - component: {fileID: 140206917}
+  m_Layer: 0
+  m_Name: PlayerController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &140206917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140206916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07635f193f9cd9b4aa70a52be2596dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 222598495}
+--- !u!4 &140206918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140206916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &222598495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4287019512310588637, guid: 6606c92d6cf20034a8c9a62999d8421d, type: 3}
+  m_PrefabInstance: {fileID: 4421977885395637281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd9df6ccfe3f674c83a84c57172da0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 678043711034394298, guid: f905064e5c594984891d566aa54e8492, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 678043711034394299, guid: f905064e5c594984891d566aa54e8492, type: 3}
       propertyPath: tile_x
       value: 5
@@ -248,6 +307,10 @@ PrefabInstance:
     - target: {fileID: 678043711034394300, guid: f905064e5c594984891d566aa54e8492, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 678043711034394300, guid: f905064e5c594984891d566aa54e8492, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 678043711034394300, guid: f905064e5c594984891d566aa54e8492, type: 3}
       propertyPath: m_LocalPosition.x
@@ -298,6 +361,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 425388146243183360, guid: 6606c92d6cf20034a8c9a62999d8421d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5378054318023080713, guid: 6606c92d6cf20034a8c9a62999d8421d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -359,6 +426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 770371284858692615, guid: 05ef63fe962c55d428f48b71f284b233, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5347364859218687310, guid: 05ef63fe962c55d428f48b71f284b233, type: 3}
       propertyPath: m_Name
       value: Food
@@ -369,11 +440,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8321412626452199556, guid: 05ef63fe962c55d428f48b71f284b233, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4842664
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8321412626452199556, guid: 05ef63fe962c55d428f48b71f284b233, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1698569
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8321412626452199556, guid: 05ef63fe962c55d428f48b71f284b233, type: 3}
       propertyPath: m_LocalPosition.z

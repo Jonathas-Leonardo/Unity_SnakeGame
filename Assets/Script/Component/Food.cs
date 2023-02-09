@@ -19,7 +19,6 @@ public class Food : Item
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.gameObject.name);
         Player player = other.gameObject.GetComponent<Player>();
         if(player != null){Destroy(gameObject);}
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Player : MonoBehaviour, IPlayer
+public class Player : MonoBehaviour
 {
 
     public int score = 0;
@@ -30,10 +30,21 @@ private void OnTriggerEnter2D(Collider2D other) {
     }
 }
 
-    public void Walk(){}
+public void TurnLeft(){
+    transform.eulerAngles += new Vector3(0,0,90);
+    Walk();
+}
+
+public void TurnRight(){
+    transform.eulerAngles += new Vector3(0,0,-90);
+    Walk();
+}
+
+    public virtual void Walk(){
+        Debug.Log("Player - Walk");
+        transform.position += transform.right;// * Vector3.right;
+    }
     public void Eat(){}
     public void Damage(){}
     public void Death(){}
-    public void Win(){}
-    public void Lose(){}
 }

@@ -7,12 +7,19 @@ public class Snake : Player
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    public override void Walk()
+    {
+        base.Walk();
+        Debug.Log("Snake - Walk");
+    }
+
 }

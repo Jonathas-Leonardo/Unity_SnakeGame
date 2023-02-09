@@ -38,11 +38,13 @@ public class Tile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         IsCollider = true;
+        TileGrid.instance.tileSelected_list.Add(this);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         IsCollider = false;
         IsVisited = true;
+        TileGrid.instance.tileSelected_list.Remove(this);
     }
 }
