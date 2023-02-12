@@ -5,15 +5,16 @@ using System.Linq;
 
 public class TileGrid : MonoBehaviour
 {
-[SerializeField]
-    private int tile_x =0;
-  [SerializeField]
-    private int tile_y =0;
+    [SerializeField] private int tile_x =0;
+    [SerializeField] private int tile_y =0;
+    [SerializeField] private List<Tile> tile_list = new List<Tile>();
+    [SerializeField] private List<int> tileActived_list = new List<int>();
+    [SerializeField] private List<int> tileEmpty_list = new List<int>();
+    [SerializeField] private List<int> tileVisited_list = new List<int>();
+    [SerializeField] private List<int> tileNeverVisited_list = new List<int>();
+    
     public Tile tile_pfb;
-    public List<Tile> tile_list = new List<Tile>();
-    public List<Tile> tileSelected_list = new List<Tile>();
     public GameObject pivotCenter_obj;
-
     public static TileGrid instance;
 
     private void Awake() {
@@ -21,7 +22,7 @@ public class TileGrid : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         if(tile_pfb==null){return;}
         GenerateGrid();
@@ -37,13 +38,70 @@ public class TileGrid : MonoBehaviour
                 Tile tile_obj = Instantiate(tile_pfb,new Vector2(i,-y),Quaternion.identity);
                 tile_obj.name="Tile_"+index;
                 tile_obj.gameObject.transform.parent = transform;
-                tile_obj.index = index;
+                tile_obj.SetIndex(index);
                 tile_list.Add(tile_obj);
+                tileEmpty_list.Add(index);
+                tileNeverVisited_list.Add(index);
             }
         }
     }
 
     private Vector2 CalcCenterPosition(float x, float y ){
         return new Vector2(x/2f,y/2f);
+    }
+
+    public Vector3? GetRandomEmptyTilePosition(){
+        int count = GetNumberOfEmptyGrid();
+        if(count<1){return null;}
+        int randomIndex = Random.Range(0,count);
+        int indexx = tileEmpty_list[randomIndex];
+        return tile_list[indexx-1].gameObject.transform.position;
+    }
+
+    public int GetNumberOfEmptyGrid(){
+        return tileEmpty_list.Count();
+    }
+
+    public int GetNumberOfNerverVisitedTileGrid(){
+        return tileNeverVisited_list.Count();
+    }
+
+    public void AddTileSelected(Tile tile){
+        int index = tile.GetIndex();
+        tileActived_list.Add(index);
+
+//if(!tile.IsCollider){
+   //     tileEmpty_list.Remove(index);
+//}
+        // if(tileActived_list.Contains(index)){
+        // }
+        // if(!tile.IsVisited){
+        //     tileVisited_list.Add(index);
+        //     tileNeverVisited_list.Remove(index);
+        // }
+    }
+
+    public void AddTileVisited(int index){
+        tileVisited_list.Add(index);
+        tileNeverVisited_list.Remove(index);
+    }
+
+    public void RemoveTileEmpty(int index){
+        tileEmpty_list.Remove(index);
+    }
+
+    public void AddTileEmpty(int index){
+        tileEmpty_list.Add(index);
+    }
+
+    public void RemoveTileSelected(Tile tile){
+        int index = tile.GetIndex();
+
+        tileActived_list.Remove(index);
+        //if(!tileActived_list.Contains(index)){
+//if(!tile.IsCollider){
+
+          //  tileEmpty_list.Add(index);
+       // }
     }
 }

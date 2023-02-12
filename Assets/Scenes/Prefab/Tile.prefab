@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,14 +97,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac013b4a86f6c9142890e660abbb59c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   IsCollider: 0
+  IsVisited: 0
   trigger_color:
     serializedVersion: 2
-    rgba: 4285511129
+    rgba: 4278190335
   visited_color:
     serializedVersion: 2
-    rgba: 4280853493
-  index: 0
+    rgba: 4285953654
   tileEvent:
     m_PersistentCalls:
       m_Calls:

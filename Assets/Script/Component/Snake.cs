@@ -19,7 +19,7 @@ public class Snake : Player
     public override void Walk()
     {
         base.Walk();
-        Debug.Log("Snake - Walk");
+        //Debug.Log("Snake - Walk");
     }
 
 }

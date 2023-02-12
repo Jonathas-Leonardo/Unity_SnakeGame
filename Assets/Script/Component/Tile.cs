@@ -5,17 +5,13 @@ using UnityEngine.Events;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField]
-    private bool IsCollider;
-    private bool IsVisited;
-    [SerializeField]
-    private Color32 trigger_color;
+    [SerializeField] private int index;
+    [SerializeField] public bool IsCollider;
+    [SerializeField] public bool IsVisited;
     private Color32 default_color;
-    [SerializeField]
-    private Color32 visited_color;
-
-    [SerializeField]
-    public int index;
+    [SerializeField] private Color32 trigger_color;
+    [SerializeField] private Color32 visited_color;
+    [SerializeField] private int numberColliders;
     public UnityEvent tileEvent;
 
     private Renderer rend; //Component
@@ -30,21 +26,52 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(IsVisited){rend.material.color = visited_color;}
-        else if(IsCollider){rend.material.color = trigger_color;}
-        else{rend.material.color = default_color;}
+        if (IsVisited) { rend.material.color = visited_color; }
+        else if (IsCollider) { rend.material.color = trigger_color; }
+        else { rend.material.color = default_color; }
     }
+
+    public void SetIndex(int value){index = value;}
+
+    public int GetIndex(){return index;}
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        IsCollider = true;
-        TileGrid.instance.tileSelected_list.Add(this);
+        Player player = other.GetComponent<Player>();
+        Food food = other.GetComponent<Food>();
+
+        if (player == null && food == null) { return; }
+
+        if (!IsVisited)
+        {
+            TileGrid.instance.AddTileVisited(this.index);
+        }
+
+        numberColliders++;
+        IsVisited = true;
+
+        IsCollider = (numberColliders > 0);
+
+        if (numberColliders == 1)
+        {
+            TileGrid.instance.AddTileSelected(this);
+            TileGrid.instance.RemoveTileEmpty(this.index);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        IsCollider = false;
-        IsVisited = true;
-        TileGrid.instance.tileSelected_list.Remove(this);
+        Player player = other.GetComponent<Player>();
+        Food food = other.GetComponent<Food>();
+        if (player == null && food == null) { return; }
+
+        numberColliders--;
+        IsCollider = (numberColliders > 0);
+
+        if (numberColliders == 0)
+        {
+            TileGrid.instance.RemoveTileSelected(this);
+            TileGrid.instance.AddTileEmpty(this.index);
+        }
     }
 }

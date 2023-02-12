@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
 
     public GameObject target_obj;
-    public bool IsMoveToTarget;
+    [SerializeField] private bool IsMoveToTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour
         if (IsMoveToTarget) { GetTargetPosition(); }
     }
 
-    void GetTargetPosition()
+    private void GetTargetPosition()
     {
         //if(target_obj==null){return;}
         Vector3 target_pos = target_obj.transform.position;

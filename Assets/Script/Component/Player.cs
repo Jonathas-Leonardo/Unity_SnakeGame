@@ -6,45 +6,36 @@ using System;
 public class Player : MonoBehaviour
 {
 
-    public int score = 0;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int score = 0;
+
+    public void AddScore(int value)
     {
-        
+        score += value;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        Food food = other.GetComponent<Food>();
+        if (food != null)
+        {
+            AddScore(food.GetPoints());
+        }
     }
 
-    public void AddScore(int value){
-        score+=value;
+    public virtual void TurnLeft()
+    {
+        transform.eulerAngles += new Vector3(0, 0, 90);
+        Walk();
     }
 
-private void OnTriggerEnter2D(Collider2D other) {
-    Food food = other.GetComponent<Food>();
-    if(food!=null){
-        AddScore(food.points);
+    public virtual void TurnRight()
+    {
+        transform.eulerAngles += new Vector3(0, 0, -90);
+        Walk();
     }
-}
 
-public void TurnLeft(){
-    transform.eulerAngles += new Vector3(0,0,90);
-    Walk();
-}
-
-public void TurnRight(){
-    transform.eulerAngles += new Vector3(0,0,-90);
-    Walk();
-}
-
-    public virtual void Walk(){
-        Debug.Log("Player - Walk");
-        transform.position += transform.right;// * Vector3.right;
+    public virtual void Walk()
+    {
+        transform.position += transform.right;
     }
-    public void Eat(){}
-    public void Damage(){}
-    public void Death(){}
 }

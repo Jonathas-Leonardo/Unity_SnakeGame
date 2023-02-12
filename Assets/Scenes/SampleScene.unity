@@ -246,7 +246,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -292,25 +292,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileGrid
       objectReference: {fileID: 0}
-    - target: {fileID: 678043711034394298, guid: f905064e5c594984891d566aa54e8492, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 678043711034394299, guid: f905064e5c594984891d566aa54e8492, type: 3}
-      propertyPath: tile_x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 678043711034394299, guid: f905064e5c594984891d566aa54e8492, type: 3}
-      propertyPath: tile_y
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 678043711034394300, guid: f905064e5c594984891d566aa54e8492, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 678043711034394300, guid: f905064e5c594984891d566aa54e8492, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 678043711034394300, guid: f905064e5c594984891d566aa54e8492, type: 3}
       propertyPath: m_LocalPosition.x
@@ -361,10 +345,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 425388146243183360, guid: 6606c92d6cf20034a8c9a62999d8421d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5378054318023080713, guid: 6606c92d6cf20034a8c9a62999d8421d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -413,10 +393,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snake
       objectReference: {fileID: 0}
-    - target: {fileID: 6504582668606366062, guid: 6606c92d6cf20034a8c9a62999d8421d, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6606c92d6cf20034a8c9a62999d8421d, type: 3}
 --- !u!1001 &4463676528009316286
@@ -426,10 +402,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 770371284858692615, guid: 05ef63fe962c55d428f48b71f284b233, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5347364859218687310, guid: 05ef63fe962c55d428f48b71f284b233, type: 3}
       propertyPath: m_Name
       value: Food
