@@ -46,9 +46,7 @@ public class TileGrid : MonoBehaviour
         }
     }
 
-    private Vector2 CalcCenterPosition(float x, float y ){
-        return new Vector2(x/2f,y/2f);
-    }
+    private Vector2 CalcCenterPosition(float x, float y )=> new Vector2(x/2f,y/2f);
 
     public Vector3? GetRandomEmptyTilePosition(){
         int count = GetNumberOfEmptyGrid();
@@ -57,51 +55,15 @@ public class TileGrid : MonoBehaviour
         int indexx = tileEmpty_list[randomIndex];
         return tile_list[indexx-1].gameObject.transform.position;
     }
-
-    public int GetNumberOfEmptyGrid(){
-        return tileEmpty_list.Count();
-    }
-
-    public int GetNumberOfNerverVisitedTileGrid(){
-        return tileNeverVisited_list.Count();
-    }
-
-    public void AddTileSelected(Tile tile){
-        int index = tile.GetIndex();
-        tileActived_list.Add(index);
-
-//if(!tile.IsCollider){
-   //     tileEmpty_list.Remove(index);
-//}
-        // if(tileActived_list.Contains(index)){
-        // }
-        // if(!tile.IsVisited){
-        //     tileVisited_list.Add(index);
-        //     tileNeverVisited_list.Remove(index);
-        // }
-    }
-
-    public void AddTileVisited(int index){
+    public int GetNumberOfEmptyGrid() => tileEmpty_list.Count();
+    public int GetNumberOfNerverVisitedTileGrid() => tileNeverVisited_list.Count();
+    public void AddTileVisited(int index)
+    {
         tileVisited_list.Add(index);
         tileNeverVisited_list.Remove(index);
     }
-
-    public void RemoveTileEmpty(int index){
-        tileEmpty_list.Remove(index);
-    }
-
-    public void AddTileEmpty(int index){
-        tileEmpty_list.Add(index);
-    }
-
-    public void RemoveTileSelected(Tile tile){
-        int index = tile.GetIndex();
-
-        tileActived_list.Remove(index);
-        //if(!tileActived_list.Contains(index)){
-//if(!tile.IsCollider){
-
-          //  tileEmpty_list.Add(index);
-       // }
-    }
+    public void RemoveTileEmpty(int index)=>tileEmpty_list.Remove(index);
+    public void AddTileEmpty(int index) => tileEmpty_list.Add(index);
+    public void RemoveTileSelected(int  index) => tileActived_list.Remove(index);
+    public void AddTileSelected(int index) => tileActived_list.Add(index);
 }

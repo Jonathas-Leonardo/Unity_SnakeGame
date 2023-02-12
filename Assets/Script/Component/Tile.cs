@@ -54,8 +54,8 @@ public class Tile : MonoBehaviour
 
         if (numberColliders == 1)
         {
-            TileGrid.instance.AddTileSelected(this);
-            TileGrid.instance.RemoveTileEmpty(this.index);
+            TileGrid.instance.AddTileSelected(index);
+            TileGrid.instance.RemoveTileEmpty(index);
         }
     }
 
@@ -70,8 +70,8 @@ public class Tile : MonoBehaviour
 
         if (numberColliders == 0)
         {
-            TileGrid.instance.RemoveTileSelected(this);
-            TileGrid.instance.AddTileEmpty(this.index);
+            TileGrid.instance.RemoveTileSelected(index);
+            TileGrid.instance.AddTileEmpty(index);
         }
     }
 }
