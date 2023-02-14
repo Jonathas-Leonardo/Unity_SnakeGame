@@ -13,7 +13,6 @@ public class Tile : MonoBehaviour
     [SerializeField] private Color32 trigger_color;
     [SerializeField] private Color32 visited_color;
     [SerializeField] private int numberColliders;
-    public UnityEvent tileEvent;
 
     private Renderer rend; //Component
 
