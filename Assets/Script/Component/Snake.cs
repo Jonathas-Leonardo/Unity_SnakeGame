@@ -10,6 +10,8 @@ public class Snake : Player
     [SerializeField] private SnakeBody lastBody;
     private SnakeBody snakeBody;
 
+    public bool IsWarped;
+
     private void Start() {
         snakeBody = GetComponent<SnakeBody>();
         snakeBody_list.Add(snakeBody);
@@ -31,9 +33,20 @@ public class Snake : Player
     {
         base.OnTriggerEnter2D(other);
         Food food = other.GetComponent<Food>();
+        Tile tile = other.GetComponent<Tile>();
         if (food != null)
         {
             CreateBody(lastBody.transform.position);
+        }
+        if(tile!=null){
+            if(tile.IsWarped && !IsWarped){
+           
+            IsWarped=true;
+            transform.position = tile.destinationPos;
+            }
+              if(!tile.IsWarped){
+                    IsWarped = false;
+              }
         }
     }
 

@@ -48,14 +48,14 @@ public class Tile : MonoBehaviour
 
         if (player == null && food == null && snakeBody == null) { return; }
 
+        numberColliders++;
+
+        if(IsWarped){return;}
         if (!IsVisited)
         {
             TileGrid.instance.AddTileVisited(this.index);
         }
-
-        numberColliders++;
         IsVisited = true;
-
         IsCollider = (numberColliders > 0);
 
         if (numberColliders == 1)
@@ -73,9 +73,11 @@ public class Tile : MonoBehaviour
 
         if (player == null && food == null && snakeBody == null) { return; }
 
+
         numberColliders--;
         IsCollider = (numberColliders > 0);
 
+        if(IsWarped){return;}
         if (numberColliders == 0)
         {
             TileGrid.instance.RemoveTileSelected(index);

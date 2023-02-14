@@ -30,29 +30,48 @@ public class TileGrid : MonoBehaviour
         pivotCenter_obj.transform.position = CalcCenterPosition(tile_x-1,(tile_y-1)*-1);
     }
 
-    private void SetDestination(){
-
-    }
-
     private void GenerateGrid(){
         for (var y = 0; y < tile_y; y++)
         {
             for (var i = 0; i < tile_x; i++)
             {
-                int index = (y*tile_x)+i+1;
-                Tile tile_obj = Instantiate(tile_pfb,new Vector2(i,-y),Quaternion.identity);
-                tile_obj.name="Tile_"+index;
+                //if((i==0 && y==0) || (i==tile_x-1 && y== tile_y-1) || i==0 && y==tile_y-1 || y==0 && i==tile_x-1){continue;}
+
+                int index = (y * tile_x) + i + 1;
+                Tile tile_obj = Instantiate(tile_pfb, new Vector2(i, -y), Quaternion.identity);
+                tile_obj.name = "Tile_" + index;
                 tile_obj.gameObject.transform.parent = transform;
                 tile_obj.SetIndex(index);
-                if(i==0 || i==(tile_x-1) || y==0 || y==(tile_y-1)){
-                    tile_obj.IsWarped=true;
+                tile_obj.destinationPos = SetDestination(i, y);
+
+                if (i == 0 || i == (tile_x - 1) || y == 0 || y == (tile_y - 1))
+                {
+                    tile_obj.IsWarped = true;
                     tileWarped_list.Add(tile_obj);
                 }
+                else
+                {
+                    tileEmpty_list.Add(index);
+                    tileNeverVisited_list.Add(index);
+                }
                 tile_list.Add(tile_obj);
-                tileEmpty_list.Add(index);
-                tileNeverVisited_list.Add(index);
             }
         }
+    }
+
+    private Vector2Int SetDestination(int i, int y)
+    {
+        int dest_x = i;
+        int dest_y = y;
+        int limit_x = tile_x - 1;
+        int limit_y = tile_y - 1;
+
+        if (i == 0){ dest_x = limit_x-1; }
+        else if (i == limit_x){ dest_x = 1; }
+        if (y == 0) { dest_y = limit_y-1; }
+        else if (y == limit_y) { dest_y = 1; }
+
+        return new Vector2Int(dest_x, -dest_y);
     }
 
     private Vector2 CalcCenterPosition(float x, float y )=> new Vector2(x/2f,y/2f);
