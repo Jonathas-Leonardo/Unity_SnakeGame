@@ -12,6 +12,7 @@ public class TileGrid : MonoBehaviour
     [SerializeField] private List<int> tileEmpty_list = new List<int>();
     [SerializeField] private List<int> tileVisited_list = new List<int>();
     [SerializeField] private List<int> tileNeverVisited_list = new List<int>();
+    [SerializeField] private List<Tile> tileWarped_list = new List<Tile>();
     
     public Tile tile_pfb;
     public GameObject pivotCenter_obj;
@@ -29,6 +30,10 @@ public class TileGrid : MonoBehaviour
         pivotCenter_obj.transform.position = CalcCenterPosition(tile_x-1,(tile_y-1)*-1);
     }
 
+    private void SetDestination(){
+
+    }
+
     private void GenerateGrid(){
         for (var y = 0; y < tile_y; y++)
         {
@@ -39,6 +44,10 @@ public class TileGrid : MonoBehaviour
                 tile_obj.name="Tile_"+index;
                 tile_obj.gameObject.transform.parent = transform;
                 tile_obj.SetIndex(index);
+                if(i==0 || i==(tile_x-1) || y==0 || y==(tile_y-1)){
+                    tile_obj.IsWarped=true;
+                    tileWarped_list.Add(tile_obj);
+                }
                 tile_list.Add(tile_obj);
                 tileEmpty_list.Add(index);
                 tileNeverVisited_list.Add(index);

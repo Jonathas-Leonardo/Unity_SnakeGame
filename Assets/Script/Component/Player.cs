@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
         score += value;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
         Food food = other.GetComponent<Food>();
         if (food != null)

@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private int index;
     [SerializeField] public bool IsCollider;
     [SerializeField] public bool IsVisited;
+    [SerializeField] public bool IsWarped;
     private Color32 default_color;
     [SerializeField] private Color32 trigger_color;
     [SerializeField] private Color32 visited_color;
@@ -16,12 +17,16 @@ public class Tile : MonoBehaviour
 
     private Renderer rend; //Component
 
+    public Vector2 destinationPos;
+
     // Start is called before the first frame update
     void Start()
     {
         rend = GetComponent<Renderer>();
         default_color = rend.material.color;
+        if(IsWarped){rend.enabled=false;}
     }
+
 
     // Update is called once per frame
     void Update()
@@ -39,8 +44,9 @@ public class Tile : MonoBehaviour
     {
         Player player = other.GetComponent<Player>();
         Food food = other.GetComponent<Food>();
+        SnakeBody snakeBody = other.GetComponent<SnakeBody>();
 
-        if (player == null && food == null) { return; }
+        if (player == null && food == null && snakeBody == null) { return; }
 
         if (!IsVisited)
         {
@@ -63,7 +69,9 @@ public class Tile : MonoBehaviour
     {
         Player player = other.GetComponent<Player>();
         Food food = other.GetComponent<Food>();
-        if (player == null && food == null) { return; }
+        SnakeBody snakeBody = other.GetComponent<SnakeBody>();
+
+        if (player == null && food == null && snakeBody == null) { return; }
 
         numberColliders--;
         IsCollider = (numberColliders > 0);

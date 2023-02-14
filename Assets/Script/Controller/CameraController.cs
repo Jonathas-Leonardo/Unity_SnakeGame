@@ -24,7 +24,6 @@ public class CameraController : MonoBehaviour
 
     private void GetTargetPosition()
     {
-        //if(target_obj==null){return;}
         Vector3 target_pos = target_obj.transform.position;
         transform.position = new Vector3(target_pos.x, target_pos.y, transform.position.z);
     }
